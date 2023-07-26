@@ -1,0 +1,16 @@
+{
+    "name": "Tags",
+    "rootNamespace": "",
+    "references": [
+        "GUID:94dd7e47937e8574199a83d34f2697e0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

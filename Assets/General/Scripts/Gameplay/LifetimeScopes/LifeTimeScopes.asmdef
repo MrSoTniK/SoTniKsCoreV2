@@ -1,0 +1,18 @@
+{
+    "name": "LifeTimeScopes",
+    "rootNamespace": "",
+    "references": [
+        "GUID:94dd7e47937e8574199a83d34f2697e0",
+        "GUID:e59bf9fc7d5a44b18a819a92edd46163",
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
