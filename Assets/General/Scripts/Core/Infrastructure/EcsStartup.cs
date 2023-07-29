@@ -5,7 +5,9 @@ using VContainer.Unity;
 
 namespace Core.Infrastructure 
 {
-    public abstract class EcsStartup<TSceneType> : IInitializable, ITickable, IFixedTickable, IDisposable where TSceneType : Enum
+    public abstract class EcsStartup<TSceneType, TSceneInfo> : IInitializable, ITickable, IFixedTickable, IDisposable 
+        where TSceneType : Enum
+        where TSceneInfo : SceneInfoAbstract<TSceneType>
     {
         protected readonly EcsWorld World;
         protected readonly WorldsInfo WorldsInfo;
@@ -25,17 +27,20 @@ namespace Core.Infrastructure
         protected bool UpdateSystemsExist;
         protected bool FixedUpdateSystemsExist;
 
-        public EcsStartup(List<IEcsPreInitSystem> ecsPreInitSystems, List<IEcsInitSystem> ecsInitSystems,
-                              List<IEcsRunSystem> ecsRunSystems, List<IEcsRunSystem> ecsFixedRunSystems,                          
-                              EcsWorld world, WorldsInfo worldsInfo, TSceneType sceneType) 
+        public EcsStartup(WorldsInfo worldsInfo, TSceneInfo sceneInfo) 
         {
-            World = world;
+            SceneType = sceneInfo.SceneType;
             WorldsInfo = worldsInfo;
-            SceneType = sceneType;
+            World = WorldsInfo.WorldsDictionary[Convert.ToInt32(SceneType)];         
+        }
+
+        public void SetSystems(List<IEcsPreInitSystem> ecsPreInitSystems, List<IEcsInitSystem> ecsInitSystems,
+                              List<IEcsRunSystem> ecsRunSystems, List<IEcsRunSystem> ecsFixedRunSystems) 
+        {
             _preInitializeSystems = new(World);
             _initializeSystems = new(World);
             _updateSystems = new(World);
-            _fixedUpdateSystems = new(World);       
+            _fixedUpdateSystems = new(World);
 
             _ecsPreInitSystems = ecsPreInitSystems;
             _ecsInitSystems = ecsInitSystems;

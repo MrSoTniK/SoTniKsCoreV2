@@ -10,12 +10,12 @@ namespace Core.Tools
         public event Action SceneIsLoaded;
         public event Action SceneIsUnLoaded;
 
-        private static readonly Lazy<ScenesLoader> lazy =
+        private static readonly Lazy<ScenesLoader> _lazy =
          new Lazy<ScenesLoader>(() => new ScenesLoader());
 
         private static List<string> _loadedScenesList = new List<string>();
 
-        public static ScenesLoader Instance { get { return lazy.Value; } }
+        public static ScenesLoader Instance { get { return _lazy.Value; } }
         public string CurrentScene { get; private set; }
 
         public static void LoadScenePath(string scenePath) 

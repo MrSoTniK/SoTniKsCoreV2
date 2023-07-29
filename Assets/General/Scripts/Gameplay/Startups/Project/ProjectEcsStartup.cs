@@ -1,16 +1,13 @@
 using Core.Infrastructure;
 using Gameplay.Enums.Scenes;
-using Leopotam.EcsLite;
-using System.Collections.Generic;
+using Gameplay.Info.Scenes.Project;
 
 namespace Gameplay.Startups.Project
 {
-    public class ProjectEcsStartup : EcsStartup<SceneType>
+    public class ProjectEcsStartup : EcsStartup<SceneType, ProjectInfo>
     {
-        public ProjectEcsStartup(List<IEcsPreInitSystem> ecsPreInitSystems, List<IEcsInitSystem> ecsInitSystems,
-                                 List<IEcsRunSystem> ecsRunSystems, List<IEcsRunSystem> ecsFixedRunSystems,
-                                 EcsWorld world, WorldsInfo worldsInfo, SceneType sceneType) :
-           base(ecsPreInitSystems, ecsInitSystems, ecsRunSystems, ecsFixedRunSystems, world, worldsInfo, sceneType)
+        public ProjectEcsStartup(WorldsInfo worldsInfo, ProjectInfo sceneInfo) :
+           base(worldsInfo, sceneInfo)
         { }
     }
 }
