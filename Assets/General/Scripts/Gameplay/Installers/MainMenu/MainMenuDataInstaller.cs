@@ -1,6 +1,6 @@
 using Core.Infrastructure.Installers;
 using Gameplay.Enums.Scenes;
-using Gameplay.Info.Scenes.Project;
+using Gameplay.Info.Scenes.MainMenu;
 using VContainer;
 
 namespace Gameplay.Installers.MainMenu 

@@ -1,6 +1,6 @@
 using Core.Infrastructure;
 using Gameplay.Enums.Scenes;
-using Gameplay.Info.Scenes.Project;
+using Gameplay.Info.Scenes.MainMenu;
 
 namespace Gameplay.Startups.MainMenu 
 {
