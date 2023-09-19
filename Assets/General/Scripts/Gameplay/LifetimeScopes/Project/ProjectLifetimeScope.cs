@@ -3,7 +3,7 @@ using Core.Infrastructure.LifetimeScopes;
 
 namespace Gameplay.LifetimeScopes.Bootstrap
 {
-    public class ProjectLifetimeScope : ContextLifetimeScope
+    public class ProjectLifetimeScope : ParentContextLifetimeScope
     {
         protected override void Configure(IContainerBuilder builder)
         {

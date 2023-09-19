@@ -5,16 +5,17 @@ using VContainer.Unity;
 
 namespace Core.Infrastructure.LifetimeScopes 
 {
-    public abstract class ContextLifetimeScope: LifetimeScope
+    public abstract class ParentContextLifetimeScope : LifetimeScope
     {
-        [SerializeField] protected ParentContextLifetimeScope ProjectLifeTimeScopeTemplate;
         [SerializeField] protected MonoInstallerAbstract[] MonoInstallersForInjection;
         [SerializeField] protected MonoInstallerAbstract[] MonoInstallers;
 
+        public static LifetimeScope Instance { get; protected set; }
+
         protected override void Configure(IContainerBuilder builder)
         {
-            if(Parent != null)
-            { 
+            if (Parent != null)
+            {
                 foreach (var monoInstaller in MonoInstallersForInjection)
                 {
                     Parent.Container.Inject(monoInstaller);
@@ -22,31 +23,18 @@ namespace Core.Infrastructure.LifetimeScopes
             }
 
             foreach (var monoInstaller in MonoInstallers)
-            {              
+            {
                 monoInstaller.RegisterBindings(builder);
             }
         }
 
         protected override void Awake()
-        {            
-            if(ParentContextLifetimeScope.Instance == null) 
-            {
-                Object.Instantiate(ProjectLifeTimeScopeTemplate);
-            }
-
+        {
+            DontDestroyOnLoad(gameObject);
             base.Awake();
-        }
-
-        protected virtual void SetProjectContext() 
-        {
-            DontDestroyOnLoad(gameObject);         
-        }
-
-        protected virtual void SetSceneContext()
-        {
-            Object.Instantiate(ProjectLifeTimeScopeTemplate);
-        }
-
+            Instance = this;
+        }     
+      
         protected override void OnDestroy()
         {
             base.OnDestroy();

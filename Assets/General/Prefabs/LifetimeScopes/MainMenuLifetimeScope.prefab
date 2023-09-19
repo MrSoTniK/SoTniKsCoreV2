@@ -56,6 +56,7 @@ MonoBehaviour:
     TypeName: Gameplay.LifetimeScopes.Bootstrap.ProjectLifetimeScope
   autoRun: 1
   autoInjectGameObjects: []
+  ProjectLifeTimeScopeTemplate: {fileID: 1824941812988176901, guid: 30bd1605ed410f04aa2bf9757603c639, type: 3}
   MonoInstallersForInjection:
   - {fileID: 5454020097133616242}
   - {fileID: 5454020097133616240}
@@ -170,4 +171,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneSystemsInstaller: {fileID: 5454020097133616243}
-  DataInstaller: {fileID: 5454020097133616269}
