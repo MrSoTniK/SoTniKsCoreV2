@@ -33,5 +33,17 @@ namespace Core.Tools
                 }
             }
         }
+
+        public static string EncryptDecrypt(string data, string key)
+        {
+            string result = "";
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                result += (char)(data[i] ^ key[i % key.Length]);
+            }
+
+            return result;
+        }
     }
 }
