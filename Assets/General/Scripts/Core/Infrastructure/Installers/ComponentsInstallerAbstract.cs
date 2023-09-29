@@ -32,8 +32,8 @@ namespace Core.Infrastructure.Installers
 
         protected virtual void BindComponents()
         {
-            var convertableGameObjects =
-               GameObject.FindObjectsOfType<ConvertToEntity>();
+            var convertableGameObjects = GameObject.
+                 FindObjectsByType<ConvertToEntity>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             // Iterate throught all gameobjects, that has ECS Components
 
             EcsWorld world = WorldGetter<TSceneType, TSceneInfo>.GetWorld(SceneInfo, WorldsInfo);
