@@ -24,8 +24,8 @@ namespace Core.Infrastructure.Installers
         {
             builder.RegisterBuildCallback(container =>
             {
-                var startup = container.Resolve<TEcsStratup>();
-                startup.SetSystems(SceneSystemsInstaller.EcsPreInitSystems, SceneSystemsInstaller.EcsInitSystems,
+                EcsStratup = container.Resolve<TEcsStratup>();
+                EcsStratup.SetSystems(SceneSystemsInstaller.EcsPreInitSystems, SceneSystemsInstaller.EcsInitSystems,
                     SceneSystemsInstaller.EcsRunSystems, SceneSystemsInstaller.EcsFixedRunSystems);
             });
 
