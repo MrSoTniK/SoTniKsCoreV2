@@ -28,10 +28,13 @@ namespace Core.Infrastructure.LifetimeScopes
         }
 
         protected override void Awake()
-        {            
-            if(ParentContextLifetimeScope.Instance == null) 
+        {
+            if (ParentContextLifetimeScope.Instance == null)
             {
-                Object.Instantiate(ProjectLifeTimeScopeTemplate);
+                var projectLifeTimeScopeTemplate = Object.Instantiate(ProjectLifeTimeScopeTemplate);
+                projectLifeTimeScopeTemplate.IsRoot = true;
+                projectLifeTimeScopeTemplate.Init();
+                if (!projectLifeTimeScopeTemplate.autoRun) projectLifeTimeScopeTemplate.Build();
             }
 
             base.Awake();

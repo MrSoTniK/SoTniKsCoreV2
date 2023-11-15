@@ -11,9 +11,12 @@ namespace Core.Infrastructure.LifetimeScopes
         [SerializeField] protected MonoInstallerAbstract[] MonoInstallers;
 
         public static LifetimeScope Instance { get; protected set; }
+        protected bool IsConfigured = false;
 
         protected override void Configure(IContainerBuilder builder)
         {
+            if (IsConfigured || Instance == null) return;
+
             if (Parent != null)
             {
                 foreach (var monoInstaller in MonoInstallersForInjection)
@@ -28,13 +31,17 @@ namespace Core.Infrastructure.LifetimeScopes
             }
         }
 
+        public void Init()
+        {
+            base.Awake();
+        }
+
         protected override void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            base.Awake();
             Instance = this;
-        }     
-      
+        }
+
         protected override void OnDestroy()
         {
             base.OnDestroy();

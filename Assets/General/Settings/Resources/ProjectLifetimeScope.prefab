@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentReference:
     TypeName: 
-  autoRun: 1
+  autoRun: 0
   autoInjectGameObjects: []
   MonoInstallersForInjection: []
   MonoInstallers:
@@ -138,4 +138,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneSystemsInstaller: {fileID: 5920235900198866561}
-  DataInstaller: {fileID: 187788351799441131}
